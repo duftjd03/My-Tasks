@@ -1,0 +1,806 @@
+/* 전역 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #6366f1;
+    --primary-hover: #4f46e5;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+
+    /* 라이트모드 (기본값) */
+    --bg-light: #f5f7fa;
+    --bg-white: #ffffff;
+    --text-dark: #1f2937;
+    --text-light: #6b7280;
+    --border-color: #e5e7eb;
+    --gray-disabled: #d1d5db;
+    --input-bg: #f0f9ff;
+    --input-text: #000000;
+    --input-placeholder: #94a3b8;
+
+    --work: #3b82f6;
+    --personal: #ec4899;
+    --study: #8b5cf6;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: var(--text-dark);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--bg-white);
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+/* 헤더 */
+.header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #667eea 100%);
+    color: white;
+    padding: 40px 20px;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: -1px;
+}
+
+.subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    font-weight: 400;
+}
+
+.theme-toggle {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.theme-toggle:active {
+    transform: scale(0.95);
+}
+
+/* 진행률 섹션 */
+.progress-section {
+    padding: 24px 20px;
+    background: var(--bg-light);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.progress-text {
+    color: var(--text-dark);
+}
+
+.progress-percentage {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--success-color) 0%, var(--primary-color) 100%);
+    border-radius: 10px;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.progress-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.remaining-text {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* 검색 섹션 */
+.search-section {
+    display: flex;
+    gap: 10px;
+    padding: 16px 20px;
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.search-input {
+    flex: 1;
+    padding: 10px 16px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: var(--input-text);
+    background-color: var(--input-bg);
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.search-input::placeholder {
+    color: var(--input-placeholder);
+}
+
+.clear-completed-btn {
+    padding: 10px 16px;
+    background: #fecaca;
+    color: #7f1d1d;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    white-space: nowrap;
+}
+
+.clear-completed-btn:hover {
+    background: #fca5a5;
+    transform: translateY(-2px);
+}
+
+.clear-completed-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* 카테고리 탭 */
+.category-tabs {
+    display: flex;
+    gap: 8px;
+    padding: 16px 20px;
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border-color);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    align-items: center;
+}
+
+.shortcut-hint {
+    margin-left: auto;
+    font-size: 0.75rem;
+    color: var(--text-light);
+    white-space: nowrap;
+    padding: 0 8px;
+}
+
+.tab-btn {
+    padding: 8px 16px;
+    border: 2px solid var(--border-color);
+    background: transparent;
+    color: var(--text-light);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.tab-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* 입력 폼 섹션 */
+.input-section {
+    padding: 20px;
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.task-form {
+    width: 100%;
+}
+
+.form-group {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+}
+
+.task-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--input-text);
+    background-color: var(--input-bg);
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.task-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.task-input::placeholder {
+    color: var(--input-placeholder);
+}
+
+.category-select {
+    padding: 12px 12px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--input-text);
+    background: var(--input-bg);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.category-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.add-btn {
+    padding: 12px 24px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    white-space: nowrap;
+}
+
+.add-btn:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.add-btn:active {
+    transform: translateY(0);
+}
+
+/* 할 일 목록 섹션 */
+.task-list-section {
+    min-height: 200px;
+    padding: 20px;
+    background: var(--bg-light);
+    flex: 1;
+}
+
+.task-list {
+    list-style: none;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-light);
+}
+
+.empty-state p {
+    margin: 8px 0;
+    font-size: 1.1rem;
+}
+
+.empty-hint {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-top: 12px;
+}
+
+/* 할 일 아이템 (스타일만 - 기능은 나중) */
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.task-item:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+}
+
+.task-checkbox {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+.task-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.task-text {
+    font-size: 1rem;
+    color: #000000;
+    font-weight: 500;
+    word-break: break-word;
+}
+
+.task-item.completed .task-text {
+    text-decoration: line-through;
+    color: var(--gray-disabled);
+}
+
+.task-category {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    width: fit-content;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.task-category.work {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--work);
+}
+
+.task-category.personal {
+    background: rgba(236, 72, 153, 0.1);
+    color: var(--personal);
+}
+
+.task-category.study {
+    background: rgba(139, 92, 246, 0.1);
+    color: var(--study);
+}
+
+.task-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.delete-btn {
+    background: transparent;
+    border: none;
+    color: var(--danger-color);
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.delete-btn:hover {
+    background: rgba(239, 68, 68, 0.1);
+}
+
+/* 하단 푸터 */
+.footer {
+    padding: 16px 20px;
+    background: var(--bg-light);
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+    body {
+        padding: 12px;
+    }
+
+    .header-top {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .title {
+        font-size: 2rem;
+        margin-bottom: 0;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .header {
+        padding: 20px 16px;
+        text-align: center;
+    }
+
+    .theme-toggle {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+
+    .search-section {
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px 16px;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+
+    .clear-completed-btn {
+        width: 100%;
+    }
+
+    .category-tabs {
+        padding: 12px 16px;
+        gap: 6px;
+    }
+
+    .shortcut-hint {
+        display: none;
+    }
+
+    .form-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .category-select,
+    .task-input,
+    .add-btn {
+        width: 100%;
+    }
+
+    .task-item {
+        padding: 12px;
+        margin-bottom: 10px;
+    }
+
+    .task-text {
+        font-size: 0.95rem;
+    }
+
+    .progress-stats {
+        flex-direction: column;
+        gap: 6px;
+    }
+}
+
+/* 매우 작은 화면 */
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.75rem;
+    }
+
+    .progress-section {
+        padding: 16px;
+    }
+
+    .category-tabs {
+        gap: 4px;
+    }
+
+    .tab-btn {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+
+    .input-section {
+        padding: 16px;
+    }
+
+    .task-list-section {
+        padding: 16px;
+        min-height: 150px;
+    }
+
+    .task-category {
+        font-size: 0.7rem;
+    }
+}
+
+/* 라이트모드 명시적 설정 */
+html[data-theme="light"] {
+    --bg-white: #ffffff;
+    --bg-light: #f5f7fa;
+    --text-dark: #1f2937;
+    --text-light: #64748b;
+    --border-color: #e2e8f0;
+    --gray-disabled: #cbd5e1;
+    --input-bg: #f0f9ff;
+    --input-text: #000000;
+    --input-placeholder: #94a3b8;
+}
+
+html[data-theme="light"] body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+html[data-theme="light"] .task-text {
+    color: #000000;
+    font-weight: 500;
+}
+
+html[data-theme="light"] .search-input,
+html[data-theme="light"] .task-input {
+    background-color: #f0f9ff;
+    color: #000000;
+    border-color: #cbd5e1;
+}
+
+html[data-theme="light"] .search-input::placeholder,
+html[data-theme="light"] .task-input::placeholder {
+    color: #94a3b8;
+}
+
+html[data-theme="light"] .category-select {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #e2e8f0;
+}
+
+/* 다크모드 - 명시적 설정 */
+html[data-theme="dark"] {
+    --bg-white: #0f1419;
+    --bg-light: #1a1f2e;
+    --text-dark: #f1f5f9;
+    --text-light: #cbd5e1;
+    --border-color: #334155;
+    --gray-disabled: #64748b;
+    --input-bg: #1e293b;
+    --input-text: #ffffff;
+    --input-placeholder: #64748b;
+}
+
+html[data-theme="dark"] body {
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+}
+
+html[data-theme="dark"] .task-text {
+    color: #f1f5f9;
+    font-weight: 500;
+}
+
+html[data-theme="dark"] .search-input,
+html[data-theme="dark"] .task-input {
+    background-color: #1e293b;
+    color: #ffffff;
+    border-color: #334155;
+}
+
+html[data-theme="dark"] .search-input:focus,
+html[data-theme="dark"] .task-input:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+html[data-theme="dark"] .search-input::placeholder,
+html[data-theme="dark"] .task-input::placeholder {
+    color: #64748b;
+}
+
+html[data-theme="dark"] .category-select {
+    background-color: #1a1f2e;
+    color: #f1f5f9;
+    border-color: #334155;
+}
+
+html[data-theme="dark"] .category-select:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+html[data-theme="dark"] .theme-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+html[data-theme="dark"] .theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+html[data-theme="dark"] .container {
+    background: #0f1419;
+}
+
+html[data-theme="dark"] .header {
+    background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%);
+}
+
+html[data-theme="dark"] .progress-section {
+    background: #1a1f2e;
+    border-bottom-color: #334155;
+}
+
+html[data-theme="dark"] .progress-text {
+    color: #f1f5f9;
+}
+
+html[data-theme="dark"] .progress-percentage {
+    color: #60a5fa;
+}
+
+html[data-theme="dark"] .progress-stats {
+    color: #cbd5e1;
+}
+
+html[data-theme="dark"] .remaining-text {
+    color: #60a5fa;
+}
+
+html[data-theme="dark"] .search-section {
+    background: #0f1419;
+    border-bottom-color: #334155;
+}
+
+html[data-theme="dark"] .clear-completed-btn {
+    background: #7f1d1d;
+    color: #fecaca;
+}
+
+html[data-theme="dark"] .clear-completed-btn:hover {
+    background: #991b1b;
+}
+
+html[data-theme="dark"] .category-tabs {
+    background: #0f1419;
+    border-bottom-color: #334155;
+}
+
+html[data-theme="dark"] .tab-btn {
+    border-color: #475569;
+    color: #cbd5e1;
+}
+
+html[data-theme="dark"] .tab-btn:hover {
+    border-color: #6366f1;
+    color: #60a5fa;
+}
+
+html[data-theme="dark"] .tab-btn.active {
+    background: #6366f1;
+    border-color: #6366f1;
+    color: #ffffff;
+}
+
+html[data-theme="dark"] .shortcut-hint {
+    color: #64748b;
+}
+
+html[data-theme="dark"] .input-section {
+    background: #0f1419;
+    border-bottom-color: #334155;
+}
+
+html[data-theme="dark"] .task-list-section {
+    background: #1a1f2e;
+}
+
+html[data-theme="dark"] .empty-state {
+    color: #cbd5e1;
+}
+
+html[data-theme="dark"] .empty-hint {
+    color: #94a3b8;
+}
+
+html[data-theme="dark"] .task-item {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+html[data-theme="dark"] .task-item:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme="dark"] .task-item.completed .task-text {
+    color: #94a3b8;
+}
+
+html[data-theme="dark"] .delete-btn:hover {
+    background: rgba(239, 68, 68, 0.15);
+}
+
+html[data-theme="dark"] .footer {
+    background: #1a1f2e;
+    border-top-color: #334155;
+    color: #cbd5e1;
+}
+
+/* 시스템 다크모드 감지 (명시적 테마 설정이 없을 때) */
+@media (prefers-color-scheme: dark) {
+    html:not([data-theme="light"]) {
+        --bg-white: #0f1419;
+        --bg-light: #1a1f2e;
+        --text-dark: #f1f5f9;
+        --text-light: #cbd5e1;
+        --border-color: #334155;
+        --gray-disabled: #64748b;
+        --input-bg: #1e293b;
+        --input-text: #ffffff;
+        --input-placeholder: #64748b;
+    }
+
+    html:not([data-theme="light"]) body {
+        background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+    }
+}
